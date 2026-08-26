@@ -1,46 +1,84 @@
-# Portofolio Perkuliahan: Pemrograman Perangkat Bergerak (TRPL Poliwangi)
-
-Repositori resmi portofolio praktikum mahasiswa untuk mata kuliah **Pemrograman Perangkat Bergerak (Semester 5 / TA 2026/2027)**, Program Studi Sarjana Terapan Teknologi Rekayasa Perangkat Lunak, Politeknik Negeri Banyuwangi.
+# 📱 Portofolio Praktikum Pemrograman Perangkat Bergerak (Flutter)
+### Program Studi Sarjana Terapan Teknologi Rekayasa Perangkat Lunak (TRPL)
+**Politeknik Negeri Banyuwangi (Poliwangi) — Semester Ganjil 2026**
 
 ---
 
 ## 👤 Identitas Mahasiswa
-- **Nama Lengkap**: [Nama Mahasiswa]
-- **NIM**: [NIM Mahasiswa]
-- **Kelas / Semester**: [TRPL 5A / 5B]
-- **Dosen Pengampu**: Sepyan Purnama Kristanto
+
+| Informasi | Data Mahasiswa |
+|---|---|
+| **Nama Lengkap** | Mahasiswa TRPL Poliwangi *(Ganti dengan Nama Lengkap Anda)* |
+| **NIM** | 362458302000 *(Ganti dengan NIM Asli Anda)* |
+| **Kelas / Angkatan** | TRPL 5A / 2024 |
+| **Dosen Pengampu** | Sepyan Purnama Kristanto |
+| **Link Repositori** | `https://github.com/codelabs-poliwangi/...` |
 
 ---
 
-## 📂 Struktur Portofolio 16 Minggu
+## 🗺️ Rekapitulasi Progres 16 Modul
 
-```
-.
-├── README.md                                                 # Ringkasan portofolio semester
-├── 01-week-1-mobile-development-ecosystem-flutter-refresh/   # Minggu 1
-│   ├── README.md                                             # Penjelasan & refleksi tugas
-│   ├── lib/                                                  # Source code Flutter
-│   └── screenshots/                                          # Bukti running emulator
-├── 02-week-2-declarative-ui-responsive-design/               # Minggu 2
-├── 03-week-3-navigation-state-management/                    # Minggu 3
-├── 04-week-4-networking-rest-api/                            # Minggu 4
-├── 05-week-5-local-storage-offline-first/                    # Minggu 5
-├── 06-week-6-authentication-security-fcm/                    # Minggu 6
-├── 07-week-7-clean-architecture/                             # Minggu 7
-├── 08-week-8-mid-project-review/                             # Minggu 8 (UTS)
-├── 09-week-9-ai-assisted-development/                        # Minggu 9
-├── 10-week-10-ai-feature-integration/                        # Minggu 10
-├── 11-week-11-performance-optimization/                      # Minggu 11
-├── 12-week-12-testing-quality-assurance/                     # Minggu 12
-├── 13-week-13-ci-cd-automation/                              # Minggu 13
-├── 14-week-14-deployment-monitoring/                         # Minggu 14
-├── 15-week-15-secure-mobile-development/                     # Minggu 15
-└── 16-week-16-final-project-expo/                            # Minggu 16 (UAS / Capstone)
-```
+| Minggu | Judul Modul | Status | Nilai Autograder |
+|:---:|---|:---:|:---:|
+| **#01** | Mobile Ecosystem, Flutter Setup & Dart Refresh | ✅ Selesai | 100 / 100 |
+| **#02** | Declarative UI & Responsive Layout | ✅ Selesai | 100 / 100 |
+| **#03** | Navigation & State Management (GoRouter & Riverpod) | ⏳ On Progress | - |
+| **#04** | Networking & REST API Integration (Dio) | 🔒 Terkunci | - |
+| **#05** | Local Storage & Offline-First (SQLite, Hive) | 🔒 Terkunci | - |
+| **#06** | Authentication, Security & FCM | 🔒 Terkunci | - |
+| **#07** | Clean Architecture & MVVM Pattern | 🔒 Terkunci | - |
+| **#08** | **Mid Project Review — Evaluasi UTS** | 🔒 Terkunci | - |
+| **#09** | AI-Assisted Development & Prompt Engineering | 🔒 Terkunci | - |
+| **#10** | AI Feature Integration (Gemini & ML Kit OCR) | 🔒 Terkunci | - |
+| **#11** | Performance Optimization & Flutter DevTools | 🔒 Terkunci | - |
+| **#12** | Testing & Quality Assurance (Unit, Widget, Mock) | 🔒 Terkunci | - |
+| **#13** | CI/CD & Automation (GitHub Actions Pipeline) | 🔒 Terkunci | - |
+| **#14** | Deployment & Monitoring (Crashlytics, Beta Test) | 🔒 Terkunci | - |
+| **#15** | Secure Mobile Development (OWASP Mobile Top 10) | 🔒 Terkunci | - |
+| **#16** | **Final Capstone Expo — Evaluasi UAS** | 🔒 Terkunci | - |
 
 ---
 
-## ⚡ Status Autograding & CI
-Setiap commit yang di-push ke branch `main` akan diuji secara otomatis oleh **GitHub Actions**:
-- `flutter analyze` (Pengecekan linter & null safety)
-- `flutter test` (Pengujian unit test & widget test)
+## 🛠️ Cara Menjalankan Proyek di Lokal
+
+1. **Install dependensi:**
+   ```bash
+   flutter pub get
+   ```
+
+2. **Jalankan analisis kode (*Static Analysis*):**
+   ```bash
+   flutter analyze
+   ```
+
+3. **Jalankan seluruh pengujian otomatis (*Unit & Widget Tests*):**
+   ```bash
+   flutter test
+   ```
+
+4. **Jalankan aplikasi ke Emulator / HP Fisik:**
+   ```bash
+   flutter run
+   ```
+
+---
+
+## 📝 Konvensi Pesan Commit (Conventional Commits)
+
+Mahasiswa wajib menggunakan standar pesan commit berikut:
+- `feat(w01): setup flutter toolchain and build profile screen`
+- `fix(w02): resolve renderflex overflow on course card`
+- `docs(w01): update screenshot and reflection in readme`
+- `test(w02): add widget test for layoutbuilder responsive grid`
+
+---
+
+## 🤖 Catatan Penggunaan AI (Responsible AI Disclosure)
+
+| Bagian Kode | Alat AI yang Digunakan | Tujuan Penggunaan | Validasi Manual yang Dilakukan |
+|---|---|---|---|
+| *Contoh: lib/modul_02/...* | *GitHub Copilot / Gemini* | *Saran warna Material 3* | *Memeriksa kontras rasio warna WCAG AAA* |
+
+---
+
+*Hak Cipta © 2026 Jurusan Bisnis dan Informatika, Politeknik Negeri Banyuwangi.*

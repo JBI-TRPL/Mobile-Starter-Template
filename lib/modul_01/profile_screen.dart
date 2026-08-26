@@ -1,3 +1,12 @@
+// ==============================================================================
+// STARTER CODE MAHASISWA: MODUL 01 — PROFILE SCREEN APP
+//
+// PETUNJUK:
+// 1. Ganti 'Nama Lengkap Anda' dan 'NIM: 3624XXXXXXXX' dengan data asli Anda.
+// 2. Kustomisasi ikon dan data Program Studi.
+// 3. Tambahkan tombol Verifikasi Status Mahasiswa dengan SnackBar interaktif.
+// ==============================================================================
+
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -22,7 +31,7 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Avatar Mahasiswa
+              // ── TODO 1: Avatar Mahasiswa ──────────────────────────────────
               Container(
                 width: 96,
                 height: 96,
@@ -42,9 +51,9 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // Nama Mahasiswa
+              // ── TODO 2: Ganti dengan Nama Lengkap Anda Sendiri ─────────────
               const Text(
-                'Mahasiswa Poliwangi',
+                'Nama Lengkap Mahasiswa', // TODO: Masukkan nama lengkap Anda
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -53,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 6),
 
-              // NIM Badge
+              // ── TODO 3: Ganti dengan NIM Anda Sendiri ──────────────────────
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                 decoration: BoxDecoration(
@@ -61,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Text(
-                  'NIM: 362458302000',
+                  'NIM: 362458302000', // TODO: Masukkan NIM Anda
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
@@ -71,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // Info Card
+              // ── TODO 4: Kartu Informasi Mahasiswa ──────────────────────────
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
@@ -99,6 +108,33 @@ class ProfileScreen extends StatelessWidget {
                         value: 'Semester 5 — Angkatan 2024',
                       ),
                     ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // ── TODO 5: Tombol Aksi Verifikasi (SnackBar) ─────────────────
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Status: Mahasiswa Aktif Poliwangi 2026'),
+                        backgroundColor: Color(0xFF0284C7),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.verified_user_rounded),
+                  label: const Text('Verifikasi Status Mahasiswa'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF0284C7),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),

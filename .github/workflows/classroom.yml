@@ -1,0 +1,64 @@
+name: GitHub Classroom Autograding
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  autograding:
+    name: Flutter Lint & Test Autograding
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Student Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java Environment
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.x'
+          channel: 'stable'
+          cache: true
+
+      - name: Verify Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Check Week 1 Project
+        run: |
+          if [ -d "01-week-1-mobile-development-ecosystem-flutter-refresh" ]; then
+            cd 01-week-1-mobile-development-ecosystem-flutter-refresh
+            flutter pub get
+            flutter analyze --no-fatal-infos
+            if [ -d "test" ]; then
+              flutter test
+            fi
+            cd ..
+          fi
+
+      - name: Check Week 2 Project
+        if: always()
+        run: |
+          if [ -d "02-week-2-declarative-ui-responsive-design" ]; then
+            cd 02-week-2-declarative-ui-responsive-design
+            flutter pub get
+            flutter analyze --no-fatal-infos
+            if [ -d "test" ]; then
+              flutter test
+            fi
+            cd ..
+          fi
+
+      - name: Autograding Score Reporter
+        uses: education/autograding-grading-reporter@v1
+        if: always()
+        with:
+          runners: autograding

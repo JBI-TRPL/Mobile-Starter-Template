@@ -1,20 +1,23 @@
+// ── MODEL DATA KURSUS: Merepresentasikan entitas mata kuliah akademik ─────────
 class Course {
-  final String code;
-  final String name;
-  final String lecturer;
-  final int sks;
-  final double progress; // 0.0 sampai 1.0
-  final String room;
+  final String code;     // Kode unik mata kuliah (misal: 'TRPL501')
+  final String name;     // Nama lengkap mata kuliah (misal: 'Pemrograman Perangkat Bergerak')
+  final String lecturer; // Nama dosen pengampu mata kuliah
+  final int sks;         // Bobot satuan kredit semester (1-6 SKS)
+  final double progress; // Capaian silabus mahasiswa (nilai desimal 0.0 sampai 1.0)
+  final String room;     // Ruangan perkuliahan atau laboratorium praktikum
 
+  // Konstruktor konstan dengan named parameters yang wajib diisi (required)
   const Course({
     required this.code,
     required this.name,
     required this.lecturer,
     required this.sks,
     required this.progress,
-    this.room = 'Lab Komputer 3',
+    this.room = 'Lab Komputer 3', // Nilai default jika ruangan tidak diisi
   });
 
+  // Fungsi helper statis untuk menyediakan data tiruan (dummy data) Semester 5
   static List<Course> getSampleCourses() {
     return const [
       Course(

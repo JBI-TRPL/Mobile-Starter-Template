@@ -1,107 +1,83 @@
-// ==============================================================================
-// STARTER CODE MAHASISWA: MODUL 01 — PROFILE SCREEN APP
-//
-// TUJUAN PEMBELAJARAN:
-// 1. Memahami struktur dasar aplikasi Flutter (MaterialApp, Scaffold, AppBar, Body).
-// 2. Menerapkan Dart Sound Null Safety dan kustomisasi identitas mahasiswa.
-// 3. Menguasai widget dasar: Column, Container, Card, CircleAvatar/Icon, dan Row.
-// 4. Membangun interaktivitas sederhana dengan ElevatedButton dan SnackBar.
-//
-// PETUNJUK PENGERJAAN:
-// - Ganti 'Nama Lengkap Anda' dan 'NIM: 3624XXXXXXXX' dengan data asli Anda.
-// - Jalankan pengujian autograding lokal: flutter test test/modul_01_test.dart
-// ==============================================================================
-
 import 'package:flutter/material.dart';
 
-// Widget utama halaman profil mahasiswa (StatelessWidget: bersifat statis/immutable)
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Scaffold: Kerangka dasar halaman Material Design (menyediakan AppBar, warna background, body)
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC), // Warna latar belakang abu-abu terang yang bersih
-      // AppBar: Bilah navigasi atas dengan judul halaman
+      backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
         title: const Text(
           'Profil Mahasiswa TRPL',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: const Color(0xFF0284C7), // Warna tema biru Poliwangi
-        foregroundColor: Colors.white,            // Warna teks dan ikon di AppBar
-        centerTitle: true,                        // Memposisikan judul persis di tengah
+        backgroundColor: const Color(0xFF0284C7),
+        foregroundColor: Colors.white,
+        centerTitle: true,
       ),
-      // Body: Konten utama yang dipusatkan di tengah layar
       body: Center(
-        // SingleChildScrollView: Mencegah overflow jika layar diputar landscape atau pada smartphone kecil
+        // ScrollView dipakai agar UI tetap aman saat keyboard muncul atau layar landscape
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0), // Padding merata di sekeliling konten
-          // Column: Menyusun widget secara vertikal dari atas ke bawah
+          padding: const EdgeInsets.all(24.0),
           child: Column(
-            mainAxisSize: MainAxisSize.min, // Menyesuaikan tinggi kolom sesuai tinggi konten anaknya
+            mainAxisSize: MainAxisSize.min,
             children: [
-              // ── 1. AVATAR IDENTITAS MAHASISWA ─────────────────────────────
-              // Container berbentuk lingkaran dengan border tema sebagai wadah foto/avatar
+              // Avatar profil
               Container(
                 width: 96,
                 height: 96,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE0F2FE), // Latar lingkaran biru muda
-                  shape: BoxShape.circle,         // Bentuk lingkaran sempurna
+                  color: const Color(0xFFE0F2FE),
+                  shape: BoxShape.circle,
                   border: Border.all(
-                    color: const Color(0xFF0284C7), // Garis tepi biru Poliwangi
-                    width: 3,                       // Ketebalan border 3 piksel
+                    color: const Color(0xFF0284C7),
+                    width: 3,
                   ),
                 ),
                 child: const Icon(
-                  Icons.school_rounded, // Ikon pendidikan / kampus
+                  Icons.school_rounded,
                   size: 52,
                   color: Color(0xFF0284C7),
                 ),
               ),
-              const SizedBox(height: 16), // Spasi vertikal pemisah 16 piksel
+              const SizedBox(height: 16),
 
-              // ── 2. NAMA MAHASISWA (Ganti dengan Nama Anda Sendiri) ───────────
+              // TODO: Ganti dengan nama lengkap dan NIM Anda
               const Text(
-                'Nama Lengkap Mahasiswa', // TODO: Ganti dengan nama lengkap asli Anda
+                'Nama Lengkap Mahasiswa',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF0F172A), // Warna teks slate gelap
+                  color: Color(0xFF0F172A),
                 ),
               ),
               const SizedBox(height: 6),
-
-              // ── 3. BADGE NIM (Ganti dengan NIM Anda Sendiri) ─────────────────
-              // Container dengan sudut kapsul untuk menampilkan nomor induk mahasiswa
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE0F2FE),      // Latar biru muda lembut
-                  borderRadius: BorderRadius.circular(20), // Sudut kapsul melengkung
+                  color: const Color(0xFFE0F2FE),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Text(
-                  'NIM: 362458302000', // TODO: Ganti dengan NIM asli Anda
+                  'NIM: 362458302000',
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF0369A1), // Warna teks biru kontras
+                    color: Color(0xFF0369A1),
                   ),
                 ),
               ),
               const SizedBox(height: 24),
 
-              // ── 4. KARTU INFORMASI AKADEMIK (Card + Info Rows) ───────────────
-              // Card: Mengelompokkan rincian akademik dalam kotak elevasi dengan bayangan halus
+              // Kartu informasi akademik
               Card(
-                elevation: 2, // Ketinggian bayangan melayang
+                elevation: 2,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16), // Sudut membulat 16 piksel
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.all(20.0), // Ruang di dalam kartu
+                  padding: EdgeInsets.all(20.0),
                   child: Column(
                     children: [
                       _ProfileInfoRow(
@@ -109,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
                         label: 'Jurusan / Kampus',
                         value: 'Bisnis & Informatika — Poliwangi',
                       ),
-                      Divider(height: 24), // Garis horizontal pemisah
+                      Divider(height: 24),
                       _ProfileInfoRow(
                         icon: Icons.code_rounded,
                         label: 'Program Studi',
@@ -127,19 +103,17 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // ── 5. TOMBOL AKSI INTERAKTIF DENGAN SNACKBAR ────────────────────
-              // Tombol yang memunculkan notifikasi mengambang (SnackBar) saat diklik
+              // Tombol verifikasi dengan feedback SnackBar
               SizedBox(
-                width: double.infinity, // Membuat lebar tombol memenuhi lebar kontainer
+                width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // ScaffoldMessenger: Menampilkan pesan notifikasi sementara ke pengguna
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Status: Mahasiswa Aktif Poliwangi 2026'),
                         backgroundColor: Color(0xFF0284C7),
-                        behavior: SnackBarBehavior.floating, // Mengambang di atas batas bawah layar
-                        duration: Duration(seconds: 3),     // Durasi tampil 3 detik
+                        behavior: SnackBarBehavior.floating,
+                        duration: Duration(seconds: 3),
                       ),
                     );
                   },
@@ -163,11 +137,11 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-// ── 6. WIDGET REUSABLE: Baris rincian informasi profil ────────────────────────
+// Widget reusable untuk tiap baris informasi profil
 class _ProfileInfoRow extends StatelessWidget {
-  final IconData icon;   // Ikon yang mewakili informasi
-  final String label;    // Label judul kecil di atas (misal: 'Program Studi')
-  final String value;    // Nilai data tebal di bawah (misal: 'Sarjana Terapan TRPL')
+  final IconData icon;
+  final String label;
+  final String value;
 
   const _ProfileInfoRow({
     required this.icon,
@@ -177,10 +151,8 @@ class _ProfileInfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Row menyusun elemen secara horizontal (kiri ke kanan)
     return Row(
       children: [
-        // Kotak wadah ikon berlatar biru muda
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
@@ -189,18 +161,17 @@ class _ProfileInfoRow extends StatelessWidget {
           ),
           child: Icon(icon, size: 20, color: const Color(0xFF0284C7)),
         ),
-        const SizedBox(width: 14), // Jarak horizontal antara ikon dan teks
-
-        // Expanded: Memaksa teks mengisi sisa lebar ruang Row agar tidak overflow
+        const SizedBox(width: 14),
+        // Expanded agar teks panjang otomatis wrap ke bawah dan tidak overflow
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // Ratakan teks ke sisi kiri
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 label,
                 style: const TextStyle(
                   fontSize: 11,
-                  color: Color(0xFF64748B), // Abu-abu sekunder
+                  color: Color(0xFF64748B),
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -210,7 +181,7 @@ class _ProfileInfoRow extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF0F172A), // Slate gelap
+                  color: Color(0xFF0F172A),
                 ),
               ),
             ],

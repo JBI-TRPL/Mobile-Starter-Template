@@ -9,16 +9,16 @@ void main() {
 
       final content = file.readAsStringSync();
       
-      // Verifikasi bahwa placeholder telah diganti
+      // Verifikasi bahwa placeholder telah diganti dengan data asli
       expect(
-        content.contains('NIM: 3624XXXXXXXX'),
+        content.contains('362458302000') || content.contains('3624XXXXXXXX'),
         isFalse,
-        reason: 'Placeholder NIM belum diganti dengan NIM Anda sendiri di README.md.',
+        reason: 'Placeholder NIM belum diganti dengan NIM Asli Anda di file README.md.',
       );
       expect(
-        content.contains('Nama Lengkap Anda'),
+        content.contains('Nama Lengkap Anda') || content.contains('Mahasiswa TRPL Poliwangi'),
         isFalse,
-        reason: 'Placeholder Nama Lengkap belum diganti dengan Nama Anda sendiri di README.md.',
+        reason: 'Placeholder Nama belum diganti dengan Nama Lengkap Anda sendiri di file README.md.',
       );
     });
   });

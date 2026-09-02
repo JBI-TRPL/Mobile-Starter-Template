@@ -4,6 +4,7 @@ class Course {
   final String lecturer;
   final int sks;
   final double progress; // 0.0 sampai 1.0
+  final String room;
 
   const Course({
     required this.code,
@@ -11,6 +12,7 @@ class Course {
     required this.lecturer,
     required this.sks,
     required this.progress,
+    this.room = 'Lab Komputer 3',
   });
 
   static List<Course> getSampleCourses() {
@@ -21,6 +23,7 @@ class Course {
         lecturer: 'Sepyan Purnama Kristanto',
         sks: 4,
         progress: 0.25,
+        room: 'Lab Komputer 3',
       ),
       Course(
         code: 'TRPL502',
@@ -28,6 +31,7 @@ class Course {
         lecturer: 'Tim Dosen TRPL',
         sks: 3,
         progress: 0.40,
+        room: 'Ruang Teori 201',
       ),
       Course(
         code: 'TRPL503',
@@ -35,6 +39,7 @@ class Course {
         lecturer: 'Tim Dosen TRPL',
         sks: 3,
         progress: 0.60,
+        room: 'Ruang Teori 104',
       ),
       Course(
         code: 'TRPL504',
@@ -42,6 +47,7 @@ class Course {
         lecturer: 'Tim Dosen TRPL',
         sks: 2,
         progress: 0.15,
+        room: 'Lab Jaringan',
       ),
     ];
   }

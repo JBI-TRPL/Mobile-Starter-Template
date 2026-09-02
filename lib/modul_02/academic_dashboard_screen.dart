@@ -1,18 +1,7 @@
-// ==============================================================================
-// STARTER CODE MAHASISWA: MODUL 02 — RESPONSIVE ACADEMIC DASHBOARD
-//
-// PETUNJUK PENGERJAAN:
-// 1. Gunakan LayoutBuilder untuk mendeteksi batas lebar layar (constraints.maxWidth).
-// 2. Terapkan breakpoint 600dp:
-//    - Lebar < 600dp (Smartphone): Render 1 kolom menggunakan ListView.builder.
-//    - Lebar >= 600dp (Tablet/Desktop): Render 2 kolom menggunakan GridView.builder.
-// 3. Implementasikan tombol Switch Tema Terang/Gelap menggunakan StatefulWidget.
-// 4. Jalankan pengujian: flutter test test/modul_02_test.dart
-// ==============================================================================
-
 import 'package:flutter/material.dart';
 import 'models/course.dart';
 import 'widgets/course_card.dart';
+import 'widgets/header_banner.dart';
 
 class AcademicDashboardScreen extends StatefulWidget {
   const AcademicDashboardScreen({super.key});
@@ -50,7 +39,6 @@ class _AcademicDashboardScreenState extends State<AcademicDashboardScreen> {
           backgroundColor: const Color(0xFF0284C7),
           foregroundColor: Colors.white,
           actions: [
-            // ── TODO 3: Tombol Toggle Dark Mode ────────────────────────────
             IconButton(
               icon: Icon(_isDarkMode ? Icons.light_mode_rounded : Icons.dark_mode_rounded),
               tooltip: _isDarkMode ? 'Mode Terang' : 'Mode Gelap',
@@ -58,35 +46,56 @@ class _AcademicDashboardScreenState extends State<AcademicDashboardScreen> {
             ),
           ],
         ),
-        // ── TODO 1 & 2: LayoutBuilder Responsif (Breakpoint 600dp) ─────────
         body: LayoutBuilder(
           builder: (context, constraints) {
-            // Evaluasi lebar layar lokal
             final isTabletOrDesktop = constraints.maxWidth >= 600;
 
             if (isTabletOrDesktop) {
-              // ── TODO 2A: TATA LETAK TABLET / DESKTOP (2 KOLOM GRID) ──────
-              return GridView.builder(
-                padding: const EdgeInsets.all(16),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 2.2,
+              // ── TATA LETAK TABLET / DESKTOP (>= 600dp): 2 Kolom ─────────
+              return Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Expanded(
+                      flex: 2,
+                      child: SingleChildScrollView(
+                        child: HeaderBanner(),
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      flex: 3,
+                      child: GridView.builder(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 16,
+                          mainAxisSpacing: 16,
+                          childAspectRatio: 1.4,
+                        ),
+                        itemCount: _courses.length,
+                        itemBuilder: (context, index) {
+                          return CourseCard(course: _courses[index]);
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                itemCount: _courses.length,
-                itemBuilder: (context, index) {
-                  return CourseCard(course: _courses[index]);
-                },
               );
             } else {
-              // ── TODO 2B: TATA LETAK SMARTPHONE (1 KOLOM LISTVIEW) ────────
-              return ListView.builder(
+              // ── TATA LETAK SMARTPHONE (< 600dp): 1 Kolom ListView ───────
+              return ListView(
                 padding: const EdgeInsets.all(16),
-                itemCount: _courses.length,
-                itemBuilder: (context, index) {
-                  return CourseCard(course: _courses[index]);
-                },
+                children: [
+                  const HeaderBanner(),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Mata Kuliah Semester 5 (${_courses.length} Terdaftar)',
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 12),
+                  ..._courses.map((course) => CourseCard(course: course)),
+                ],
               );
             }
           },

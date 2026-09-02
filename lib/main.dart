@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'modul_01/profile_screen.dart';
 import 'modul_02/academic_dashboard_screen.dart';
 import 'modul_03/modul_03_app.dart';
+import 'modul_04/modul_04_app.dart';
 
 void main() {
   runApp(const PoliwangiStarterApp());
@@ -77,6 +78,18 @@ class ModuleLauncherScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (_) => const Modul03App()),
+              );
+            },
+          ),
+          const SizedBox(height: 12),
+          _ModuleCard(
+            moduleNumber: 4,
+            title: 'Networking & REST API',
+            subtitle: 'Dio Client, Repository Pattern & 4-State UI',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const Modul04App()),
               );
             },
           ),

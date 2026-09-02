@@ -8,7 +8,7 @@
       "points": 20
     },
     {
-      "name": "2. Modul 01: Dart Null Safety & Profile Widget Test",
+      "name": "2. Modul 01: Flutter Setup & ProfileScreen Widget Test",
       "setup-command": "flutter pub get",
       "command": "flutter test test/modul_01_test.dart",
       "timeout": 3,

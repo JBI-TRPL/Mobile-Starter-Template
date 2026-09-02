@@ -56,7 +56,7 @@ jobs:
         id: test-modul-01
         uses: education/autograding-command-grader@v1
         with:
-          test-name: "2. Modul 01: Dart Null Safety & Profile Widget Test"
+          test-name: "2. Modul 01: Flutter Setup & ProfileScreen Widget Test"
           setup-command: "flutter pub get"
           command: "flutter test test/modul_01_test.dart"
           timeout: 3

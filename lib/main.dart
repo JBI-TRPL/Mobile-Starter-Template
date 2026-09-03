@@ -33,10 +33,11 @@ class ModuleLauncherScreen extends StatefulWidget {
 
   // Konfigurasi batas modul aktif perkuliahan (diatur oleh Dosen Pengampu)
   // Mahasiswa hanya dapat mengakses modul dengan nomor <= activeModuleUntil
-  static const int activeModuleUntil = 2; // Saat ini: Minggu ke-2 (Modul 1 & 2 terbuka)
+  static const int activeModuleUntil = 1; // Saat ini: Minggu ke-1 (Hanya Modul 01 terbuka)
 
   // Token akses kelas untuk membuka modul saat praktikum di lab
   static const Map<int, String> modulePasscodes = {
+    2: 'TRPL-M02',
     3: 'TRPL-M03',
     4: 'TRPL-M04',
     5: 'TRPL-M05',
@@ -218,7 +219,7 @@ class _ModuleLauncherScreenState extends State<ModuleLauncherScreen> {
                   child: Text(
                     _unlockedModules.length >= 10
                         ? '👨‍🏫 Mode Dosen Aktif: Seluruh 16 modul terbuka untuk ditinjau.'
-                        : 'Perkuliahan Aktif: Minggu ke-${ModuleLauncherScreen.activeModuleUntil} (Modul 01 & 02). Modul lanjutan dibuka sesuai jadwal.',
+                        : 'Perkuliahan Aktif: Minggu ke-${ModuleLauncherScreen.activeModuleUntil} (Modul 01 Terbuka). Modul lanjutan dibuka bertahap sesuai jadwal dosen.',
                     style: const TextStyle(color: Color(0xFF0369A1), fontSize: 12, fontWeight: FontWeight.w500),
                   ),
                 ),
